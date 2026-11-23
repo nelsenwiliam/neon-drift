@@ -1,12 +1,11 @@
-"""NEON DRIFT static server: stdlib only.
+"""NEON DRIFT (SPACEMAN variant) static server: stdlib only.
 
-Serves index.html + game.js on 0.0.0.0:8080 and answers /healthz with "ok",
-following the Boxlite deploy pattern (boxlite.ai/agent.md §1): a server.py
-listening on 0.0.0.0:8080 with a /healthz endpoint, started by a supervisor
-loop as PID 1 that waits for this file and then runs it.
+Serves index.html + game.js on 0.0.0.0:8081 and answers /healthz with "ok".
+Port 8081 (not 8080) so it runs alongside the ship version on the same box
+(ecen-work: ship on /srv/game:8080, spaceman on /srv/spaceman:8081).
 
 Run:  python3 -u server.py
-Check: curl http://127.0.0.1:8080/healthz   ->  ok
+Check: curl http://127.0.0.1:8081/healthz   ->  ok
 """
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 import os
@@ -28,4 +27,4 @@ class Handler(SimpleHTTPRequestHandler):
 
 
 if __name__ == '__main__':
-    ThreadingHTTPServer(('0.0.0.0', 8080), Handler).serve_forever()
+    ThreadingHTTPServer(('0.0.0.0', 8081), Handler).serve_forever()

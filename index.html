@@ -36,7 +36,44 @@
     overflow: hidden;
     box-shadow: 0 0 60px rgba(124, 58, 237, 0.35), 0 0 24px rgba(34, 211, 238, 0.25);
   }
-  canvas { display: block; width: 100%; height: 100%; cursor: pointer; }
+  canvas { display: block; width: 100%; height: 100%; cursor: pointer; touch-action: none; }
+  .mute-btn {
+    position: absolute;
+    right: 10px; bottom: 10px;
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: rgba(5, 1, 15, 0.55);
+    color: #22d3ee;
+    border: 1px solid rgba(34, 211, 238, 0.5);
+    font-size: 15px; font-weight: 700;
+    cursor: pointer;
+    z-index: 5;
+    display: flex; align-items: center; justify-content: center;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    user-select: none;
+  }
+  .mute-btn.off { color: #64748b; border-color: rgba(100, 116, 139, 0.5); }
+  .mute-btn:active { transform: scale(0.93); }
+  .controls {
+    display: flex; gap: 10px;
+    width: min(96vw, 1280px);
+    margin-top: 12px;
+  }
+  .lane-btn {
+    flex: 1;
+    min-height: 56px;
+    font-size: 18px; font-weight: 700; letter-spacing: 0.1em;
+    background: #0f172a;
+    color: #e2e8f0;
+    border: 1px solid rgba(34, 211, 238, 0.4);
+    border-radius: 12px;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  .lane-btn:active { background: #164e63; transform: scale(0.97); }
   footer { margin-top: 14px; color: #64748b; font-size: 13px; letter-spacing: 0.06em; text-align: center; }
   footer span { color: #facc15; }
   kbd {
@@ -57,6 +94,11 @@
   </header>
   <div class="stage">
     <canvas id="game"></canvas>
+    <button id="muteBtn" class="mute-btn" type="button" aria-label="Mute atau unmute musik">♪ ON</button>
+  </div>
+  <div class="controls">
+    <button id="btnUp" class="lane-btn" type="button" aria-label="Pindah ke lane atas">▲ ATAS</button>
+    <button id="btnDown" class="lane-btn" type="button" aria-label="Pindah ke lane bawah">▼ BAWAH</button>
   </div>
   <footer>Built from a single prompt by an AI agent &middot; dodge the rocks <span>&#9733;</span> grab the stars &middot; how long can you last?</footer>
   <script src="game.js"></script>
