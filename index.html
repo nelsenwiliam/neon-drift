@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NEON DRIFT — one prompt, one button</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    background: #05010f;
+    color: #e2e8f0;
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+  header { text-align: center; margin-bottom: 14px; }
+  h1 {
+    font-size: clamp(28px, 4vw, 44px);
+    letter-spacing: 0.18em;
+    color: #22d3ee;
+    text-shadow: 0 0 24px rgba(34, 211, 238, 0.7);
+  }
+  header p { color: #94a3b8; margin-top: 4px; font-size: 15px; letter-spacing: 0.08em; }
+  header p b { color: #f472b6; font-weight: 600; }
+  .stage {
+    position: relative;
+    width: min(96vw, 1280px);
+    aspect-ratio: 16 / 9;
+    border: 1px solid rgba(34, 211, 238, 0.35);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 60px rgba(124, 58, 237, 0.35), 0 0 24px rgba(34, 211, 238, 0.25);
+  }
+  canvas { display: block; width: 100%; height: 100%; cursor: pointer; }
+  footer { margin-top: 14px; color: #64748b; font-size: 13px; letter-spacing: 0.06em; text-align: center; }
+  footer span { color: #facc15; }
+  kbd {
+    background: #1e293b;
+    border: 1px solid #475569;
+    border-bottom-width: 3px;
+    border-radius: 6px;
+    padding: 1px 8px;
+    font-family: inherit;
+    color: #e2e8f0;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>NEON DRIFT</h1>
+    <p>ONE PROMPT. <b>ONE BUTTON.</b> THREE LANES. — press <kbd>SPACE</kbd> or click / tap to switch lanes</p>
+  </header>
+  <div class="stage">
+    <canvas id="game"></canvas>
+  </div>
+  <footer>Built from a single prompt by an AI agent &middot; dodge the rocks <span>&#9733;</span> grab the stars &middot; how long can you last?</footer>
+  <script src="game.js"></script>
+</body>
+</html>
